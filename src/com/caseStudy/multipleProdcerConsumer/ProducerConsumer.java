@@ -34,18 +34,19 @@ public class ProducerConsumer {
         consumer.join();*/
     }
 
-    public static class PC{
+    public static class PC {
         private LinkedList<Integer> queue = new LinkedList<>();
         int value = 0;
         int capacity = 10;
-        public void producer(String threadName) throws InterruptedException{
-            while(true){
-                synchronized (this){
-                    if(queue.size() == capacity){
+
+        public void producer(String threadName) throws InterruptedException {
+            while (true) {
+                synchronized (this) {
+                    if (queue.size() == capacity) {
                         wait();
                     }
                     queue.add(value++);
-                    System.out.println("Produced: "+ value + " by Thread:"+ threadName);
+                    System.out.println("Produced: " + value + " by Thread:" + threadName);
                     notifyAll();
 
                     Thread.sleep(1000);
@@ -54,14 +55,14 @@ public class ProducerConsumer {
 
         }
 
-        public void consumer(String threadName) throws InterruptedException{
-            while(true){
-                synchronized (this){
-                    if(queue.size() == 0){
+        public void consumer(String threadName) throws InterruptedException {
+            while (true) {
+                synchronized (this) {
+                    if (queue.size() == 0) {
                         wait();
                     }
                     int consumed = queue.removeFirst();
-                    System.out.println("Consumed: "+consumed + " by Thread:"+ threadName);
+                    System.out.println("Consumed: " + consumed + " by Thread:" + threadName);
                     notifyAll();
                     Thread.sleep(1000);
                 }
