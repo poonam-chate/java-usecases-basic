@@ -1,4 +1,4 @@
-package com.caseStudy.multipleProdcerConsumer.com.caseStudy.contdownlatch.cyclicbarrier;
+package com.caseStudy.contdownlatch.cyclicbarrier;
 
 public class CyclicBarrierCustom {
 
